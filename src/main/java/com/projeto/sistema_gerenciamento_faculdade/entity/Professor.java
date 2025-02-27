@@ -19,14 +19,21 @@ public class Professor {
 
     }
 
-    public Professor(UUID id, String nome, int idade, String cpf, String email) {
+    
+    
+    public Professor(UUID id, String nome, int idade, String cpf, String email, 
+    List<Disciplina> disciplinas) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.cpf = cpf;
         this.email = email;
+        this.disciplinas = disciplinas;
     }
 
+
+
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -38,6 +45,7 @@ public class Professor {
 
     @OneToMany(mappedBy = "professor")
     private List<Disciplina> disciplinas;
+
 
     public UUID getId() {
         return id;
@@ -77,6 +85,14 @@ public class Professor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 
     

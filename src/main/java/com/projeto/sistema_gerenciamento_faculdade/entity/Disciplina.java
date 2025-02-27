@@ -19,10 +19,13 @@ public class Disciplina {
 
     }
 
-    public Disciplina(UUID id, String nome, int cargaHoraria) {
+ 
+
+    public Disciplina(UUID id, String nome, int cargaHoraria, Professor professor) {
         this.id = id;
         this.nome = nome;
         this.cargaHoraria = cargaHoraria;
+        this.professor = professor;
     }
 
     @Id
@@ -59,6 +62,14 @@ public class Disciplina {
 
     public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 
     

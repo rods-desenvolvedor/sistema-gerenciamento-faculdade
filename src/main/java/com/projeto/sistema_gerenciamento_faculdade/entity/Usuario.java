@@ -19,12 +19,16 @@ public class Usuario {
 
     }
 
-    public Usuario(UUID id, String name, String email, String senha) {
+    
+    public Usuario(UUID id, String name, String email, String senha, TipoUsuario tipoUsuario) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.senha = senha;
+        this.tipoUsuario = tipoUsuario;
     }
+    
+   
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -34,6 +38,14 @@ public class Usuario {
     private String senha;
 
     private TipoUsuario tipoUsuario;
+
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
 
     public UUID getId() {
         return id;
