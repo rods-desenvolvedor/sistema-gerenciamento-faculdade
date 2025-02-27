@@ -1,0 +1,22 @@
+
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: faculdade_db
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: sistema_faculdade
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin-password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - faculdade-network
+
+volumes:
+  postgres-data:
+
+networks:
+  faculdade-network:
