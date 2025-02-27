@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -35,7 +36,8 @@ public class Professor {
     private String cpf;
     private String email;
 
-    //private List<Disciplina> disciplinas;
+    @OneToMany(mappedBy = "professor")
+    private List<Disciplina> disciplinas;
 
     public UUID getId() {
         return id;
