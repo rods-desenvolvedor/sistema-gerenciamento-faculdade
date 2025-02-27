@@ -1,0 +1,12 @@
+
+
+CREATE TABLE tb_aluno (
+
+    id UUID PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    idade INT NOT NULL,
+    cpf CHAR(11) NOT NULL UNIQUE,
+    matricula VARCHAR(20) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE
+    
+);
