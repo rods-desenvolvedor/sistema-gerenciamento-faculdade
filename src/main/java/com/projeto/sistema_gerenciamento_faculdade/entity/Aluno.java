@@ -30,6 +30,18 @@ public class Aluno {
 
 
 
+    public Aluno(String nome, int idade, String cpf, String matricula, String email) {
+        this.nome = nome;
+        this.idade = idade;
+        this.cpf = cpf;
+        this.matricula = matricula;
+        this.email = email;
+    }
+
+
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
