@@ -2,7 +2,9 @@ package com.projeto.sistema_gerenciamento_faculdade.service;
 
 import org.springframework.stereotype.Service;
 
-import com.projeto.sistema_gerenciamento_faculdade.dto.AlunoDto;
+
+import com.projeto.sistema_gerenciamento_faculdade.dto.AlunoRequestDto;
+import com.projeto.sistema_gerenciamento_faculdade.dto.AlunoResponseDto;
 import com.projeto.sistema_gerenciamento_faculdade.entity.Aluno;
 import com.projeto.sistema_gerenciamento_faculdade.repository.AlunoRepository;
 
@@ -16,12 +18,12 @@ public class AlunoService {
         this.alunoRepository = alunoRepository;
     }
 
-    public Aluno cadastrarAluno(AlunoDto alunoDto)
+    public AlunoResponseDto cadastrarAluno(AlunoRequestDto alunoRequestDto)
     {
-        Aluno aluno = new Aluno(alunoDto.nome(), alunoDto.idade(), 
-        alunoDto.cpf(), alunoDto.matricula(), alunoDto.email());
 
-        return aluno;
+        Aluno aluno = alunoRequestDto.toEntity();
+        Aluno savedAluno = alunoRepository.save(aluno);
+        return new AlunoResponseDto(savedAluno);
     }
     
 }
