@@ -18,9 +18,17 @@ public class Professor {
     {
 
     }
+    
+    
+    public Professor(String nome, int idade, String cpf, String email, List<Disciplina> disciplinas) {
+        this.nome = nome;
+        this.idade = idade;
+        this.cpf = cpf;
+        this.email = email;
+        this.disciplinas = disciplinas;
+    }
 
-    
-    
+
     public Professor(UUID id, String nome, int idade, String cpf, String email, 
     List<Disciplina> disciplinas) {
         this.id = id;
