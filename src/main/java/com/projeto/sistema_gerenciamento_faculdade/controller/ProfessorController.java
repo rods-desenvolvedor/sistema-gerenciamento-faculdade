@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.projeto.sistema_gerenciamento_faculdade.dto.ProfessorRequestDto;
 import com.projeto.sistema_gerenciamento_faculdade.dto.ProfessorResponseDto;
-import com.projeto.sistema_gerenciamento_faculdade.entity.Professor;
 import com.projeto.sistema_gerenciamento_faculdade.service.ProfessorService;
 
 @RestController

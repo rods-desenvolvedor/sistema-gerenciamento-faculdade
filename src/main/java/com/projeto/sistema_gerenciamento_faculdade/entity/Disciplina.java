@@ -19,7 +19,14 @@ public class Disciplina {
 
     }
 
- 
+    
+
+    public Disciplina(String nome, int cargaHoraria) {
+        this.nome = nome;
+        this.cargaHoraria = cargaHoraria;
+    }
+
+
 
     public Disciplina(UUID id, String nome, int cargaHoraria, Professor professor) {
         this.id = id;
