@@ -1,5 +1,6 @@
 package com.projeto.sistema_gerenciamento_faculdade.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -39,6 +40,12 @@ public class DisciplinaService {
         
         Disciplina savedDisciplina = disciplinaRepository.save(disciplina);
         return new DisciplinaResponseDto(savedDisciplina);
+    }
+
+    public List<DisciplinaResponseDto> listarDisciplinas()
+    {
+        List<Disciplina> disciplinas = disciplinaRepository.findAll();
+        return disciplinas.stream().map(DisciplinaResponseDto::new).toList();
     }
     
 }
