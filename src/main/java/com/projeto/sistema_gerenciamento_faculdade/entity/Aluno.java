@@ -1,11 +1,16 @@
 package com.projeto.sistema_gerenciamento_faculdade.entity;
 
+import java.util.List;
 import java.util.UUID;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -51,6 +56,16 @@ public class Aluno {
     private String cpf;
     private String matricula;
     private String email;
+
+    @ManyToMany
+    @JoinTable(
+        name = "tb_aluno_disciplina",
+        joinColumns = @JoinColumn(name = "aluno_id"),
+        inverseJoinColumns = @JoinColumn(name = "disciplina_id")
+    )
+    private List<Disciplina> disciplinas;
+
+    
 
     
     public UUID getId() {
@@ -121,6 +136,18 @@ public class Aluno {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 
     

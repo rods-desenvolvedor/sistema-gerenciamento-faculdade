@@ -1,5 +1,7 @@
 package com.projeto.sistema_gerenciamento_faculdade.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
@@ -7,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -46,6 +49,11 @@ public class Disciplina {
     @JoinColumn(name = "professor_id")
     private Professor professor;
 
+    @ManyToMany(mappedBy = "disciplinas")
+    private List<Aluno> alunos = new ArrayList<>();
+
+    
+
 
     public UUID getId() {
         return id;
@@ -77,6 +85,18 @@ public class Disciplina {
 
     public void setProfessor(Professor professor) {
         this.professor = professor;
+    }
+
+
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
     }
 
     
