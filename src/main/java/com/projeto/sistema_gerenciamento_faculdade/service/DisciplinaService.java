@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+
 import com.projeto.sistema_gerenciamento_faculdade.dto.DisciplinaRequestDto;
 import com.projeto.sistema_gerenciamento_faculdade.dto.DisciplinaResponseDto;
 import com.projeto.sistema_gerenciamento_faculdade.entity.Disciplina;
@@ -47,5 +48,27 @@ public class DisciplinaService {
         List<Disciplina> disciplinas = disciplinaRepository.findAll();
         return disciplinas.stream().map(DisciplinaResponseDto::new).toList();
     }
+
+    public DisciplinaResponseDto atualizarDisciplina(DisciplinaRequestDto disciplinaRequestDto, UUID id)
+    {
+
+        Disciplina disciplina = null;
+        Optional<Disciplina> optionalDisciplina = disciplinaRepository.findById(id);
+
+        if(optionalDisciplina.isPresent())
+        {
+            disciplina = optionalDisciplina.get();
+            disciplina.setNome(disciplinaRequestDto.nome());
+            disciplina.setCargaHoraria(disciplinaRequestDto.cargaHoraria());
+        }
+
+        Disciplina savedDisciplina = disciplinaRepository.save(disciplina);
+        return new DisciplinaResponseDto(savedDisciplina);
+    }
+
+    public void apagarDisciplinaPeloId(UUID id)
+    {
+        disciplinaRepository.deleteById(id);
+    }   
     
 }
