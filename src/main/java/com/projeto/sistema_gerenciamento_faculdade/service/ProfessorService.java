@@ -1,6 +1,8 @@
 package com.projeto.sistema_gerenciamento_faculdade.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -32,5 +34,28 @@ public class ProfessorService {
         List<Professor> professors = professorRepository.findAll();
 
         return professors.stream().map(ProfessorResponseDto::new).toList();
+    }
+
+    public void apagarProfessorPeloId(UUID id)
+    {
+        professorRepository.deleteById(id);
+    }
+
+    public ProfessorResponseDto atualizarProfessor(ProfessorRequestDto professorRequestDto, UUID idProfessor)
+    {
+        Optional<Professor> optionalProfessor = professorRepository.findById(idProfessor);
+
+        Professor professor = null;
+
+        if(optionalProfessor.isPresent())
+        {
+            professor = optionalProfessor.get();
+            professor.setNome(professorRequestDto.nome());
+            professor.setIdade(professorRequestDto.idade());
+        }
+
+        Professor savedProfessor = professorRepository.save(professor);
+
+        return new ProfessorResponseDto(savedProfessor);
     }
 }
