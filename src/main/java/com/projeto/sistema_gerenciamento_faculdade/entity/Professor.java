@@ -3,6 +3,7 @@ package com.projeto.sistema_gerenciamento_faculdade.entity;
 import java.util.List;
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -46,9 +47,16 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Column(nullable = false)
     private String nome;
+
+    @Column(nullable = false)
     private int idade;
+
+    @Column(nullable = false, unique = true)
     private String cpf;
+
+    @Column(nullable = false, unique = true)
     private String email;
 
     @OneToMany(mappedBy = "professor")
