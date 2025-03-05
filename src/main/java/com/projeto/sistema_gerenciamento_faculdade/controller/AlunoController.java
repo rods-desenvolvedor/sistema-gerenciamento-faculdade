@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.projeto.sistema_gerenciamento_faculdade.dto.AlunoRequestDto;
 import com.projeto.sistema_gerenciamento_faculdade.dto.AlunoResponseDto;
-import com.projeto.sistema_gerenciamento_faculdade.entity.Aluno;
 import com.projeto.sistema_gerenciamento_faculdade.service.AlunoService;
 
 @RestController
