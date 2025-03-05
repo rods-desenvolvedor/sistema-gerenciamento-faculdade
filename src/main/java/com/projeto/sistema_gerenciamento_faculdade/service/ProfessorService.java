@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.projeto.sistema_gerenciamento_faculdade.dto.ProfessorRequestDto;
 import com.projeto.sistema_gerenciamento_faculdade.dto.ProfessorResponseDto;
 import com.projeto.sistema_gerenciamento_faculdade.entity.Professor;
+import com.projeto.sistema_gerenciamento_faculdade.exception.EntidadeNaoEncontradaException;
 import com.projeto.sistema_gerenciamento_faculdade.repository.ProfessorRepository;
 
 @Service
@@ -43,6 +44,8 @@ public class ProfessorService {
 
     public ProfessorResponseDto atualizarProfessor(ProfessorRequestDto professorRequestDto, UUID idProfessor)
     {
+
+        /* 
         Optional<Professor> optionalProfessor = professorRepository.findById(idProfessor);
 
         Professor professor = null;
@@ -53,6 +56,12 @@ public class ProfessorService {
             professor.setNome(professorRequestDto.nome());
             professor.setIdade(professorRequestDto.idade());
         }
+
+        */
+
+        Professor professor = professorRepository.findById(idProfessor)
+        .orElseThrow(() -> new EntidadeNaoEncontradaException("professor com ID" + " " + 
+        idProfessor + " " + "não encontrado."));
 
         Professor savedProfessor = professorRepository.save(professor);
 
