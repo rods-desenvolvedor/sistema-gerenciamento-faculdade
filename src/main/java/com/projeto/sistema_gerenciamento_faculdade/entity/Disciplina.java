@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -42,7 +43,10 @@ public class Disciplina {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Column(nullable = false)
     private String nome;
+    
+    @Column(nullable = false, name = "carga_horaria")
     private int cargaHoraria;
 
     @ManyToOne
@@ -51,8 +55,6 @@ public class Disciplina {
 
     @ManyToMany(mappedBy = "disciplinas")
     private List<Aluno> alunos = new ArrayList<>();
-
-    
 
 
     public UUID getId() {
