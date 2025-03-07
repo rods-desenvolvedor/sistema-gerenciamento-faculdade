@@ -53,7 +53,7 @@ public class Aluno {
     private String nome;
 
     @Column(nullable = false)
-    private int idade;
+    private Integer idade;
 
     @Column(nullable = false, unique = true, length = 11)
     private String cpf;
@@ -99,7 +99,7 @@ public class Aluno {
 
 
 
-    public int getIdade() {
+    public Integer getIdade() {
         return idade;
     }
 

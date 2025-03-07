@@ -18,6 +18,8 @@ import com.projeto.sistema_gerenciamento_faculdade.dto.AlunoRequestDto;
 import com.projeto.sistema_gerenciamento_faculdade.dto.AlunoResponseDto;
 import com.projeto.sistema_gerenciamento_faculdade.service.AlunoService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/aluno")
 public class AlunoController {
@@ -30,7 +32,7 @@ public class AlunoController {
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<AlunoResponseDto> cadastrarAluno(@RequestBody AlunoRequestDto alunoRequestDto)
+    public ResponseEntity<AlunoResponseDto> cadastrarAluno(@Valid @RequestBody AlunoRequestDto alunoRequestDto)
     {
         AlunoResponseDto alunoResponseDto = alunoService.cadastrarAluno(alunoRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(alunoResponseDto);
